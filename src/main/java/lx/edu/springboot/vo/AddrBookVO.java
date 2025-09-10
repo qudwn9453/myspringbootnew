@@ -1,5 +1,6 @@
 package lx.edu.springboot.vo;
 
+
 public class AddrBookVO {
 
 	int abId;
@@ -9,7 +10,6 @@ public class AddrBookVO {
 	String abBirth;
 	String abTel;
 	String abMemo;
-
 	public int getAbId() {
 		return abId;
 	}

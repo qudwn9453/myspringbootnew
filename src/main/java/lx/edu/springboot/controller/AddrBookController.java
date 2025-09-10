@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -41,4 +42,19 @@ public class AddrBookController {
 		req.setAttribute("data", list);
 		return "addrbook_list";
 	}
+	
+	@RequestMapping("/edit.do")
+	public String edit(@RequestParam("abId") int abId, HttpServletRequest req) throws Exception {
+		AddrBookVO vo = dao.getDB(abId);
+		req.setAttribute("ab", vo);
+		return "addrbook_form";                    //jsp file name
+	}
+	
+	@RequestMapping("/update.do")
+	public String update(AddrBookVO vo) throws Exception {
+		System.out.println("vo=" + vo);
+		//dao.update(vo);
+		return "redirect:addrbook_list.do";       
+	}
+	
 }
